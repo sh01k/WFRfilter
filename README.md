@@ -1,2 +1,2 @@
 # WFRfilter
-Simulation codes for sound field recording and reproduction using WFR filter
+MATLAB scripts for simulating sound field recording and reproduction using WFR filter
