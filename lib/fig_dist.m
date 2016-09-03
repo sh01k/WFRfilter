@@ -23,7 +23,7 @@ set(h,'Position',pos,'PaperUnits','centimeters','PaperPosition',[1 1 10 10]);
 hold on;
 surf(X,Y,D);
 if nargin==8
-    plot3(plt_x,plt_y,ones(length(plt_x),1)*max(max(abs(D))),'o','LineWidth',prm.plt_linewidth,'MarkerSize',prm.plt_markersize,'MarkerEdgeColor',prm.plt_markeredgecolor,'MarkerFaceColor',prm.plt_markerfacecolor);
+    plot3(plt_x,plt_y,ones(length(plt_x),1)*max(prm.zrange),'o','LineWidth',prm.plt_linewidth,'MarkerSize',prm.plt_markersize,'MarkerEdgeColor',prm.plt_markeredgecolor,'MarkerFaceColor',prm.plt_markerfacecolor);
 end
 hold off;
 shading flat;

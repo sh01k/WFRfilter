@@ -15,6 +15,8 @@
 function rtn = fig_contour(h,pos,X,Y,D,prm,plt_x,plt_y)
 
 if ~isfield(prm,'level_d'); prm.level_d = 4; end;
+if ~isfield(prm,'level_min'); prm.level_min = min(prm.zrange); end;
+if ~isfield(prm,'level_max'); prm.level_max = max(prm.zrange); end;
 if ~isfield(prm,'plt_linewidth'); prm.plt_linewidth = 2; end;
 if ~isfield(prm,'plt_markersize'); prm.plt_markersize = 6; end;
 if ~isfield(prm,'plt_markeredgecolor'); prm.plt_markeredgecolor = 'w'; end;
@@ -22,9 +24,9 @@ if ~isfield(prm,'plt_markerfacecolor'); prm.plt_markerfacecolor = 'k'; end;
 
 set(h,'Position',pos,'PaperUnits','centimeters','PaperPosition',[1 1 10 10]);
 hold on;
-contourf(X,Y,D,min(min(D)):prm.level_d:max(max(D)));
+contourf(X,Y,D,prm.level_min:prm.level_d:prm.level_max);
 if nargin==8
-    plot3(plt_x,plt_y,ones(length(plt_x),1)*max(max(abs(D))),'o','LineWidth',2,'MarkerSize',6,'MarkerEdgeColor','w','MarkerFaceColor','k');
+    plot3(plt_x,plt_y,ones(length(plt_x),1)*max(prm.zrange),'o','LineWidth',2,'MarkerSize',6,'MarkerEdgeColor','w','MarkerFaceColor','k');
 end
 hold off;
 shading flat;

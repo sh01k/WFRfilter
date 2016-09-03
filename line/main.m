@@ -7,10 +7,10 @@ close all;
 
 addpath('../lib');
 
-set(0,'defaultAxesFontSize',18);
-set(0,'defaultAxesFontName','Times');
-set(0,'defaultTextFontSize',18);
-set(0,'defaultTextFontName','Times');
+% set(0,'defaultAxesFontSize',18);
+% set(0,'defaultAxesFontName','Times');
+% set(0,'defaultTextFontSize',18);
+% set(0,'defaultTextFontName','Times');
 
 %% Parameters
 
@@ -82,7 +82,7 @@ Nsrc = 1;
 %Source type ('ps': point source, 'pw': plane wave)
 src_type = 'ps';
 
-%Source position[m]
+%Source position [m]
 xs = -0.4;
 ys = -1.0;
 zs = 0.0;
@@ -109,7 +109,7 @@ taper_vec=0.5-0.5.*cos(pi.*(1:taper_point)./taper_point);
 win_sp(1:taper_point)=taper_vec;
 win_sp(Nsp-taper_point+1:Nsp)=taper_vec(taper_point:-1:1);
 
-%% Received signals with microphone array
+%% Received signals of microphone array
 
 sig = zeros(Nm,1);
 
@@ -208,8 +208,8 @@ for iy=1:Ny
 end
 
 %Normalize amplitude
-dist_org = dist_org./abs(dist_org(Nx/2,Ny/2));
-dist = dist./abs(dist(Nx/2,Ny/2));
+dist_org = dist_org./abs(dist_org(Nx/2+1,Ny/2+1));
+dist = dist./abs(dist(Nx/2+1,Ny/2+1));
 
 %Normalized error distribution
 dist_err = 10*log10(abs(dist - dist_org).^2./abs(dist_org).^2);
