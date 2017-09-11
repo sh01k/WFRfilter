@@ -22,15 +22,13 @@ if ~isfield(prm,'plt_markersize'); prm.plt_markersize = 6; end;
 if ~isfield(prm,'plt_markeredgecolor'); prm.plt_markeredgecolor = 'w'; end;
 if ~isfield(prm,'plt_markerfacecolor'); prm.plt_markerfacecolor = 'k'; end;
 
-set(h,'Position',pos,'PaperUnits','centimeters','PaperPosition',[1 1 10 10]);
+set(h,'Position',pos);
 hold on;
 contourf(X,Y,D,prm.level_min:prm.level_d:prm.level_max);
 if nargin==8
-    plot3(plt_x,plt_y,ones(length(plt_x),1)*max(prm.zrange),'o','LineWidth',2,'MarkerSize',6,'MarkerEdgeColor','w','MarkerFaceColor','k');
+    plot(plt_x,plt_y,'o','LineWidth',2,'MarkerSize',6,'MarkerEdgeColor','w','MarkerFaceColor','k');
 end
 hold off;
-shading flat;
-view(0,90);
 caxis(prm.zrange);
 axis equal;
 axis tight;

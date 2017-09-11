@@ -19,15 +19,14 @@ if ~isfield(prm,'plt_markersize'); prm.plt_markersize = 6; end;
 if ~isfield(prm,'plt_markeredgecolor'); prm.plt_markeredgecolor = 'w'; end;
 if ~isfield(prm,'plt_markerfacecolor'); prm.plt_markerfacecolor = 'k'; end;
 
-set(h,'Position',pos,'PaperUnits','centimeters','PaperPosition',[1 1 10 10]);
+set(h,'Position',pos);
 hold on;
-surf(X,Y,D);
+imagesc(reshape(X,size(X,1)*size(X,2),1),reshape(Y,size(Y,1)*size(Y,2),1),D);
 if nargin==8
-    plot3(plt_x,plt_y,ones(length(plt_x),1)*max(prm.zrange),'o','LineWidth',prm.plt_linewidth,'MarkerSize',prm.plt_markersize,'MarkerEdgeColor',prm.plt_markeredgecolor,'MarkerFaceColor',prm.plt_markerfacecolor);
+    plot(plt_x,plt_y,'o','LineWidth',prm.plt_linewidth,'MarkerSize',prm.plt_markersize,'MarkerEdgeColor',prm.plt_markeredgecolor,'MarkerFaceColor',prm.plt_markerfacecolor);
 end
 hold off;
 shading flat;
-view(0,90);
 caxis(prm.zrange);
 axis equal;
 axis tight;
